@@ -3,7 +3,6 @@ micronaut:
   application:
     name: hostels
 
-
 jpa:
   default:
     compile-time-hibernate-proxies: true

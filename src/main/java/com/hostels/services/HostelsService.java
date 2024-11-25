@@ -6,6 +6,8 @@ import jakarta.inject.Singleton;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
+
 @Singleton
 @RequiredArgsConstructor
 public class HostelsService {
@@ -15,5 +17,17 @@ public class HostelsService {
     @Transactional
     public Hostels save(Hostels hostel) {
         return hostelsRepository.save(hostel);
+    }
+
+    public List<Hostels> searchHostels(
+        Long hostelId,
+        String hostelName,
+        String hostelAddress
+    ) {
+        return hostelsRepository.findHostelsByOptionalFields(hostelId, hostelName, hostelAddress);
+    }
+
+    public void deleteById(Long hostelId) {
+        hostelsRepository.deleteById(hostelId);
     }
 }
